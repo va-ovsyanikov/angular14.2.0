@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs">
+        <li class="nav-item" *ngFor="let tab of tabs">
+          <a
+            class="nav-link"
+            [ngClass]="{ active: tab.name == selectedTab }"
+            data-toggle="tab"
+            (click)="onClickTab(tab.name)"
+            >{{ tab.name }}</a
+          >
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Account</th>
+            </tr>
+          </thead>
+          <div class="spinner-border text-dark" *ngIf="loading"></div>
+          <tbody>
+            <tr *ngFor="let client of clients">
+              <td>{{ client.name.first }} {{ client.name.last }}</td>
+              <td>{{ client.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
